@@ -21,32 +21,88 @@
 // }
 
 // export default App;
-import ManualPublish from "./components/ManualPublish";
-import Analytics from "./components/Analytics";
-import PublishedNumbers from "./components/PublishedNumbers";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+
+import Login from "./pages/Login";
+import CreateUser from "./pages/CreateUser";
+import Users from "./pages/UserDetails";
+import Wallet from "./pages/Wallet";
+import UserDetails from "./pages/UserDetails";
+import WalletHistory from "./pages/WalletHistory";
+import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div
-      style={{
-        padding:
-          "20px",
-      }}
-    >
-      <h1>
-        Admin Panel
-      </h1>
+    <BrowserRouter>
+      <Navbar />
 
-      <ManualPublish />
+      <Routes>
+        <Route
+          path="/login"
+          element={<Login />}
+        />
 
-      <hr />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
 
-      <PublishedNumbers />
+        <Route
+          path="/users"
+          element={
+            <ProtectedRoute>
+              <UserDetails />
+            </ProtectedRoute>
+          }
+        />
 
-      <hr />
+        <Route
+          path="/create-user"
+          element={
+            <ProtectedRoute>
+              <CreateUser />
+            </ProtectedRoute>
+          }
+        />
 
-      <Analytics />
-    </div>
+        <Route
+          path="/wallet"
+          element={
+            <ProtectedRoute>
+              <Wallet />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/wallet-history"
+          element={
+            <ProtectedRoute>
+              <WalletHistory />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/user/:id"
+          element={
+            <ProtectedRoute>
+              <UserDetails />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
