@@ -59,14 +59,20 @@ function Analytics() {
 
   const fetchAnalytics =
     async () => {
-      const response =
-        await API.get(
-          "/analytics"
-        );
+      // const response =
+      //   await API.get(
+      //     "/analytics"
+      //   );
 
-      setData(
-        response.data
-      );
+      // setData(
+      //   response.data
+      // );
+      socket.on(
+  "analyticsUpdated",
+  (data) => {
+    setData(data);
+  }
+);
     };
 
   useEffect(() => {
