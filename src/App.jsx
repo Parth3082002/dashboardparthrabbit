@@ -29,19 +29,16 @@ import {
 
 import Login from "./pages/Login";
 import CreateUser from "./pages/CreateUser";
-import Users from "./pages/UserDetails";
 import Wallet from "./pages/Wallet";
 import UserDetails from "./pages/UserDetails";
 import WalletHistory from "./pages/WalletHistory";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Navbar from "./components/Navbar";
+import AppLayout from "./layouts/AppLayout";
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-
       <Routes>
         <Route
           path="/login"
@@ -49,58 +46,22 @@ function App() {
         />
 
         <Route
-          path="/"
           element={
             <ProtectedRoute>
-              <Dashboard />
+              <AppLayout />
             </ProtectedRoute>
           }
-        />
-
-        <Route
-          path="/users"
-          element={
-            <ProtectedRoute>
-              <UserDetails />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/create-user"
-          element={
-            <ProtectedRoute>
-              <CreateUser />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/wallet"
-          element={
-            <ProtectedRoute>
-              <Wallet />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/wallet-history"
-          element={
-            <ProtectedRoute>
-              <WalletHistory />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/user/:id"
-          element={
-            <ProtectedRoute>
-              <UserDetails />
-            </ProtectedRoute>
-          }
-        />
+        >
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/users" element={<UserDetails />} />
+          <Route path="/create-user" element={<CreateUser />} />
+          <Route path="/wallet" element={<Wallet />} />
+          <Route
+            path="/wallet-history"
+            element={<WalletHistory />}
+          />
+          <Route path="/user/:id" element={<UserDetails />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

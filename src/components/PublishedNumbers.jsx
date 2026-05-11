@@ -83,31 +83,29 @@ function PublishedNumbers() {
   }, []);
 
   return (
-    <div>
-      <h2>
-        Published
-        History
-      </h2>
+    <div className="section-box">
+      <div className="section-head">
+        <div>
+          <h2>Published history</h2>
+          <p className="page-subtitle">
+            Latest rounds, updated in real time.
+          </p>
+        </div>
+      </div>
 
-      {numbers.map(
-        (
-          number,
-          index
-        ) => (
-          <div
-            key={
-              index
-            }
-          >
-            Round{" "}
-            {numbers.length -
-              index}
-            →{" "}
-            {
-              number
-            }
-          </div>
-        )
+      {numbers.length === 0 ? (
+        <p className="page-subtitle">No published numbers yet.</p>
+      ) : (
+        <div className="history-list history-list--scroll">
+          {numbers.map((number, index) => (
+            <div className="history-row" key={index}>
+              <div className="pill">
+                Round {numbers.length - index}
+              </div>
+              <div className="history-value">{number}</div>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

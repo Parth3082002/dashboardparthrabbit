@@ -7,6 +7,8 @@ import Analytics from "../components/Analytics";
 
 import { getAllUsers } from "../services/user.api";
 
+import "../App.css";
+
 function Dashboard() {
   const navigate = useNavigate();
 
@@ -29,83 +31,73 @@ function Dashboard() {
       console.log(error);
     }
   };
-
   return (
-    <div
-      style={{
-        padding: "20px",
-      }}
-    >
-      <h1>Admin Panel Dashboard</h1>
+    <div className="page">
+      <div className="dashboard-header">
+        <div className="dashboard-title">
+          <h1>Admin Dashboard</h1>
+          <p>Welcome back, manage everything from here.</p>
+        </div>
+      </div>
 
-      {/* Quick Actions */}
-      <div
-        style={{
-          display: "flex",
-          gap: "15px",
-          marginBottom: "20px",
-        }}
-      >
+      <div className="cards-grid">
+        <div className="stat-card">
+          <h3>Total Users</h3>
+          <h2>{stats.totalUsers}</h2>
+        </div>
+
+        <div className="stat-card">
+          <h3>Active Status</h3>
+          <h2>Online</h2>
+        </div>
+
+        <div className="stat-card">
+          <h3>System Health</h3>
+          <h2>100%</h2>
+        </div>
+      </div>
+
+      <div className="quick-actions">
         <button
-          onClick={() =>
-            navigate("/create-user")
-          }
+          className="action-btn"
+          onClick={() => navigate("/create-user")}
         >
           Create User
         </button>
 
         <button
-          onClick={() =>
-            navigate("/users")
-          }
+          className="action-btn"
+          onClick={() => navigate("/users")}
         >
           View Users
         </button>
 
         <button
-          onClick={() =>
-            navigate("/wallet")
-          }
+          className="action-btn"
+          onClick={() => navigate("/wallet")}
         >
           Wallet Actions
         </button>
 
         <button
-          onClick={() =>
-            navigate("/wallet-history")
-          }
+          className="action-btn"
+          onClick={() => navigate("/wallet-history")}
         >
           Wallet History
         </button>
       </div>
 
-      {/* Stats */}
-      <div
-        style={{
-          border: "1px solid #ddd",
-          padding: "20px",
-          marginBottom: "20px",
-        }}
-      >
-        <h2>System Stats</h2>
-
-        <p>
-          Total Users: {stats.totalUsers}
-        </p>
+      <div className="section-box">
+        <ManualPublish />
       </div>
 
-      <hr />
+      <div className="section-box">
+        <PublishedNumbers />
+      </div>
 
-      {/* Old Existing Logic */}
-      <ManualPublish />
-
-      <hr />
-
-      <PublishedNumbers />
-
-      <hr />
-
-      <Analytics />
+      <div className="section-box">
+        <Analytics />
+      </div>
     </div>
   );
 }

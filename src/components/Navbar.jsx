@@ -1,4 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
+import {
+  FaHome,
+  FaUsers,
+  FaWallet,
+  FaSignOutAlt,
+} from "react-icons/fa";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -9,20 +15,25 @@ function Navbar() {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        gap: "20px",
-        padding: "20px",
-      }}
-    >
-      <Link to="/">Dashboard</Link>
-      <Link to="/users">Users</Link>
-      <Link to="/create-user">Create User</Link>
-      <Link to="/wallet">Wallet</Link>
+    <div className="sidebar">
+      <div className="logo">AdminPro</div>
 
-      <button onClick={logout}>
-        Logout
+      <div className="nav-links">
+        <Link to="/" className="nav-item">
+          <FaHome /> Dashboard
+        </Link>
+
+        <Link to="/users" className="nav-item">
+          <FaUsers /> Users
+        </Link>
+
+        <Link to="/wallet" className="nav-item">
+          <FaWallet /> Wallet
+        </Link>
+      </div>
+
+      <button className="logout-btn" onClick={logout}>
+        <FaSignOutAlt /> Logout
       </button>
     </div>
   );

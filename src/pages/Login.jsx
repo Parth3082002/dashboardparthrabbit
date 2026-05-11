@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { adminLogin } from "../services/auth.api";
 import { useNavigate } from "react-router-dom";
+import "../App.css";
 
 function Login() {
   const navigate = useNavigate();
@@ -21,46 +22,58 @@ function Login() {
 
       navigate("/");
     } catch (error) {
-       console.log(
-    "Backend Error:",
-    error.response?.data
-  );
-
-  alert(
-    error.response?.data?.message ||
-    "Login failed"
-  );
+      alert(
+        error.response?.data?.message ||
+          "Login Failed"
+      );
     }
   };
 
   return (
-    <div>
-      <h2>Admin Login</h2>
+    <div className="login-page">
+      <div className="login-card">
+        <h1>Welcome Back</h1>
 
-      <input
-        placeholder="Username"
-        onChange={(e) =>
-          setForm({
-            ...form,
-            username: e.target.value,
-          })
-        }
-      />
+        <p className="login-subtitle">
+          Secure Admin Dashboard Login
+        </p>
 
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) =>
-          setForm({
-            ...form,
-            password: e.target.value,
-          })
-        }
-      />
+        <div className="input-group">
+          <label>Username</label>
 
-      <button onClick={handleLogin}>
-        Login
-      </button>
+          <input
+            type="text"
+            placeholder="Enter username"
+            onChange={(e) =>
+              setForm({
+                ...form,
+                username: e.target.value,
+              })
+            }
+          />
+        </div>
+        <div className="input-group">
+          <label>Password</label>
+
+          <input
+            type="password"
+            placeholder="Enter password"
+            onChange={(e) =>
+              setForm({
+                ...form,
+                password: e.target.value,
+              })
+            }
+          />
+        </div>
+
+        <button
+          className="login-btn"
+          onClick={handleLogin}
+        >
+          Login
+        </button>
+      </div>
     </div>
   );
 }
