@@ -10,7 +10,7 @@ export const getAllUsers = async () => {
   return response.data;
 };
 
-export const getUserDetails = async (id) => {
-  const response = await API.get(`/admin/user/${id}`);
+export const getUserById = async (userId) => {
+  const response = await API.get(`/admin/users/${userId}`);
   return response.data;
 };

@@ -3,6 +3,7 @@ import {
   FaHome,
   FaUsers,
   FaWallet,
+  FaGamepad,
   FaSignOutAlt,
 } from "react-icons/fa";
 
@@ -21,6 +22,10 @@ function Navbar() {
       <div className="nav-links">
         <Link to="/" className="nav-item">
           <FaHome /> Dashboard
+        </Link>
+
+        <Link to="/games" className="nav-item">
+          <FaGamepad /> Games
         </Link>
 
         <Link to="/users" className="nav-item">
