@@ -211,7 +211,7 @@ function GameDetail() {
                 <tbody>
                   {bets.map((bet, idx) => (
                     <tr key={bet.id ?? idx}>
-                      <td>{bet.user_id ?? bet.userId ?? "—"}</td>
+                      <td>{bet.users.user_id ?? bet.userId ?? "—"}</td>
                       <td>{bet.phone ?? bet.phone_number ?? "—"}</td>
                       <td>#{bet.selected_number ?? bet.number ?? "—"}</td>
                       <td>{formatMoney(bet.amount ?? bet.stake ?? bet.bet_amount)}</td>
